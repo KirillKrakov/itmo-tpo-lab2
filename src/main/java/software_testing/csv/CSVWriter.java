@@ -16,7 +16,7 @@ public class CSVWriter {
             double cur = begin;
             writer.println(headers);
             for (int i = 0; i < count; i++) {
-                writer.println(String.format(Locale.ENGLISH, ".+,.+", cur, f.apply(cur)));
+                writer.println(String.format(Locale.ENGLISH, "%.10f,%.10f", cur, f.apply(cur)));
                 cur += step;
             }
             writer.flush();
@@ -31,7 +31,7 @@ public class CSVWriter {
             double cur = begin;
             writer.println(headers);
             for (int i = 0; i < count; i++) {
-                writer.println(String.format(Locale.ENGLISH, ".+,.+,.+", fixed, cur, f.apply(cur, fixed)));
+                writer.println(String.format(Locale.ENGLISH, "%.10f,%.10f,%.10f", fixed, cur, f.apply(cur, fixed)));
                 cur += step;
             }
         } catch (FileNotFoundException e) {
@@ -45,7 +45,7 @@ public class CSVWriter {
             double cur = begin;
             writer.println(headers);
             for (int i = 0; i < count; i++) {
-                writer.println(String.format(Locale.ENGLISH, ".+,.+,.+", fixed, fixed2, cur, f.apply(cur, fixed2, fixed)));
+                writer.println(String.format(Locale.ENGLISH, "%.10f,%.10f,%.10f,%.10f", fixed, fixed2, cur, f.apply(cur, fixed2, fixed)));
                 cur += step;
             }
         } catch (FileNotFoundException e) {
