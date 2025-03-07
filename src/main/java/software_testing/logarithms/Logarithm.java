@@ -10,7 +10,7 @@ public class Logarithm {
     }
 
     public double log(double x, double base) {
-        return log(base,x,0.00001);
+        return log(x, base,0.00001);
     }
 
     public void writeToCSV(String filename, double epsilon, double base, double begin, double step, int count) {
