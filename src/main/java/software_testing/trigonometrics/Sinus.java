@@ -15,6 +15,9 @@ public class Sinus {
     }
 
     public double sin(double x, double epsilon) {
+        if (Double.isNaN(x) || Double.isNaN(epsilon)) throw new IllegalArgumentException("x и epsilon не должны быть NaN");
+        if (Double.isInfinite(x) || Double.isInfinite(epsilon)) throw new IllegalArgumentException("x и epsilon не могут быть бесконечными");
+        if (epsilon <= 0) throw new IllegalArgumentException("Значение epsilon должно быть больше нуля");
         x %= 2 * Math.PI;
         double result = 0;
         int i = 0;

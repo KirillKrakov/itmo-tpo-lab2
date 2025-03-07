@@ -51,9 +51,15 @@ public class LogarithmTest {
     }
 
     @ParameterizedTest
-    @ValueSource(doubles = {0, -5, -0.5})
+    @ValueSource(doubles = {0, -5, -0.5, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY})
     void testNaturalLogarithmWithIllegalArgument(double x) {
         assertThrows(IllegalArgumentException.class, () -> new NaturalLogarithm().ln(x));
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0, -0.1,Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY})
+    void testEpsilonWithIllegalArgument(double epsilon) {
+        assertThrows(IllegalArgumentException.class, () -> new NaturalLogarithm().ln(3,epsilon));
     }
 
     @ParameterizedTest

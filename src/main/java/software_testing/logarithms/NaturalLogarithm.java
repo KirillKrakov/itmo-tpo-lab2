@@ -4,7 +4,9 @@ import software_testing.csv.CSVWriter;
 
 public class NaturalLogarithm {
     public double ln(double x, double epsilon) {
-        if (x <= 0) throw new IllegalArgumentException("Значение X должно быть больше нуля");
+        if (Double.isNaN(x) || Double.isNaN(epsilon)) throw new IllegalArgumentException("x и epsilon не должны быть NaN");
+        if (Double.isInfinite(x) || Double.isInfinite(epsilon)) throw new IllegalArgumentException("x и epsilon не могут быть бесконечными");
+        if (x <= 0 || epsilon <= 0) throw new IllegalArgumentException("Значение x и epsilon должно быть больше нуля");
         if (x == 1) return 0;
 
         int sign = 1;
