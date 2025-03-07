@@ -1,7 +1,7 @@
-package software_testing.math_functions;
+package software_testing.logarithms;
 
 public class NaturalLogarithm {
-    public static double ln_with_epsilon(double x, double epsilon) {
+    public static double ln(double x, double epsilon) {
         if (x <= 0) throw new IllegalArgumentException("Значение X должно быть больше нуля");
         if (x == 1) return 0;
 
@@ -26,6 +26,6 @@ public class NaturalLogarithm {
     }
 
     public static double ln(double x) {
-        return ln_with_epsilon(x, 0.00001);
+        return ln(x, 0.00001);
     }
 }
