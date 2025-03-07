@@ -1,7 +1,9 @@
 package software_testing.logarithms;
 
+import software_testing.csv.CSVWriter;
+
 public class NaturalLogarithm {
-    public static double ln(double x, double epsilon) {
+    public double ln(double x, double epsilon) {
         if (x <= 0) throw new IllegalArgumentException("Значение X должно быть больше нуля");
         if (x == 1) return 0;
 
@@ -25,7 +27,15 @@ public class NaturalLogarithm {
         return sign * result;
     }
 
-    public static double ln(double x) {
+    public double ln(double x) {
         return ln(x, 0.00001);
+    }
+
+    public void writeToCSV(String filename, double epsilon, double begin, double step, int count) {
+        CSVWriter.write(filename,epsilon,begin,step,count,this::ln, "Epsilon,X,ln(X)");
+    }
+
+    public void writeToCSV(String filename, double begin, double step, int count) {
+        CSVWriter.write(filename,begin,step,count,this::ln, "X,ln(X)");
     }
 }

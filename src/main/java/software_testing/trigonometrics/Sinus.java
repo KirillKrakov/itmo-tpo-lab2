@@ -1,9 +1,11 @@
 package software_testing.trigonometrics;
 
+import software_testing.csv.CSVWriter;
+
 import static java.lang.Math.pow;
 
 public class Sinus {
-    public static long factorial(int x) {
+    public long factorial(int x) {
         if (x <= 1) return 1;
         long result = x;
         for (int i = x - 1; i > 1; i--)
@@ -12,7 +14,7 @@ public class Sinus {
         return result;
     }
 
-    public static double sin(double x, double epsilon) {
+    public double sin(double x, double epsilon) {
         x %= 2 * Math.PI;
         double result = 0;
         int i = 0;
@@ -26,7 +28,15 @@ public class Sinus {
         return result;
     }
 
-    public static double sin(double x) {
+    public double sin(double x) {
         return sin(x,0.00001);
+    }
+
+    public void writeToCSV(String filename, double epsilon, double begin, double step, int count) {
+        CSVWriter.write(filename,epsilon,begin,step,count,this::sin, "Epsilon,X,sin(X)");
+    }
+
+    public void writeToCSV(String filename, double begin, double step, int count) {
+        CSVWriter.write(filename,begin,step,count,this::sin, "X,sin(X)");
     }
 }
